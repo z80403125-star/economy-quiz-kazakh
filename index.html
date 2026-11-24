@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1730">
+  <meta name="description" content="Экономика бойынша интерактивті викторина: ресурстар, өндіру, нарық және үнемі даму.">
+  <title>Экономика викторинасы</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-glow page-glow--top" aria-hidden="true"></div>
+  <div class="page-glow page-glow--bottom" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Экономика викторинасының басты беті">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M4 19.5h16M6.5 16V11m5.5 5V5m5.5 11V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="m5 8 5-3 5 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16.5 3H19v2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>ЭКОНОМИКА <span class="brand-divider">/</span> ВИКТОРИНА</span>
+    </a>
+    <span class="topbar-note"><span class="status-dot"></span> Біліміңді тексер</span>
+  </header>
+
+  <main class="main-content">
+    <section class="quiz-card" aria-live="polite">
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit art-orbit--one"></div>
+        <div class="art-orbit art-orbit--two"></div>
+        <div class="art-coin art-coin--large">₸</div>
+        <div class="art-coin art-coin--small">$</div>
+        <div class="art-chart">
+          <span></span><span></span><span></span><span></span><span></span>
+          <svg viewBox="0 0 120 62" fill="none">
+            <path d="m5 52 25-18 20 9 23-25 19 10 23-22" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M103 6h12v12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <div class="eyebrow"><span class="eyebrow-line"></span> БІЛІМДІ ТЕКСЕРІҢІЗ</div>
+
+        <section class="screen screen--active" id="start-screen" aria-labelledby="main-title">
+          <p class="hero-kicker">Экономика әлеміне қызықты саяхатқа дайын болыңыз</p>
+          <h1 id="main-title">Экономика<br><span>викторинасы</span></h1>
+          <p class="hero-description">Ресурстар, өндіріс, нарық және экономика негіздері туралы 20 сұрақ. Экономикадан қаншалықты хабарыңыз барын тексеріңіз.</p>
+          <div class="quiz-details">
+            <span class="detail-item">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              ~ 5 минут
+            </span>
+            <span class="detail-separator"></span>
+            <span class="detail-item">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5 12.3 7l5 .7-3.6 3.5.8 5-4.5-2.4-4.5 2.4.8-5-3.6-3.5 5-.7L10 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              20 сұрақ
+            </span>
+          </div>
+          <button class="button button--primary" id="start-button" type="button">
+            Бастау
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="fine-print">Әр сұраққа бір дұрыс жауап бар</p>
+        </section>
+
+        <section class="screen" id="question-screen" aria-labelledby="question-title" hidden>
+          <div class="question-meta">
+            <span class="question-label">СҰРАҚ <strong id="question-number">01</strong></span>
+            <span class="question-count"><strong id="question-current">1</strong> / <span id="question-total">20</span></span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-label="Викторина барысы" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <h2 class="question-title" id="question-title" tabindex="-1"></h2>
+          <div class="answer-list" id="answer-list"></div>
+          <div class="feedback" id="feedback" role="status" aria-live="polite" hidden></div>
+          <div class="question-footer">
+            <span class="footer-hint" id="footer-hint">Бір жауапты таңдаңыз</span>
+            <button class="button button--next" id="next-button" type="button" disabled>
+              Келесі
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="screen" id="result-screen" aria-labelledby="result-title" hidden>
+          <div class="result-icon" id="result-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="m14 24 7 7 14-15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <p class="hero-kicker" id="result-kicker">Тамаша нәтиже!</p>
+          <h2 class="result-title" id="result-title">Нәтиже</h2>
+          <p class="result-description" id="result-description">Сіз экономика викторинасын аяқтадыңыз.</p>
+          <div class="score-panel">
+            <div class="score-stat">
+              <span class="score-value" id="score-count">0/20</span>
+              <span class="score-label">дұрыс жауап</span>
+            </div>
+            <span class="score-divider"></span>
+            <div class="score-stat">
+              <span class="score-value score-value--blue" id="score-percent">0%</span>
+              <span class="score-label">нәтиже пайызы</span>
+            </div>
+          </div>
+          <button class="button button--primary" id="restart-button" type="button">
+            Қайта бастау
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 0 0-10.2-3.8L4 6m0 0V2.5M4 6h3.5M4 12a6 6 0 0 0 10.2 3.8L16 14m0 0v3.5M16 14h-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="fine-print">Әр дұрыс жауап — экономика бойынша жаңа білім</p>
+        </section>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>ЭКОНОМИКА ТУРАЛЫ</span>
+      <span class="footer-sparkle" aria-hidden="true">✳</span>
+      <span>ОЙЛАНЫҢЫЗ. ТАҢДАҢЫЗ. ДАМЫҢЫЗ.</span>
+    </footer>
+  </main>
+</body>
+</html>
